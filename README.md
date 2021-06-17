@@ -56,7 +56,7 @@ If you want to run the automated tests for Linux system you must follow the foll
     make -f Makefile.chekcer # This will run build and run the makefile
     ./run_all.sh # This can be run once the Makefile.checker has been built
     ```
-* now in the test director a new folder **_test/outputs** has appeared containing the results.
+* now in the test directory a new folder **_test/outputs** has appeared containing the results.
 
 The purpose of the test suite is to show the preprocessing of .c and .h files from the **_test/inputs** folder. The results of the preprocessed files is then compared with the CPP output (utilitary of GCC that is used to preprocess the .c and .h files for the GCC compiler) 
 
@@ -66,7 +66,7 @@ To use the preprocessor on other files, simply use the following command:
     ./so-cpp --parameter list
 ```
 
-Details about parameters and implementation, below.
+Details about parameters and implementation below:
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [Visual Studio Code](https://code.visualstudio.com/) - code editor
