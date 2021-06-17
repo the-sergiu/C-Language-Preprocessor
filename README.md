@@ -1,34 +1,74 @@
-Craioveanu Sergiu Ionut 331AA
+<h1 align="center">C Language Preprocessor</h1>
 
-https://ocw.cs.pub.ro/courses/so/teme/tema-1
+<p align="justify"> This is a simple C/C++ preprocessor. The goal is to have good conformance with the C and C++ standards and to handle nonstandard preprocessor extensions in gcc / clang / visual studio preprocessors. Most of the preprocessor testcases in gcc and clang are handled decently by so-cpp. Most issues are on multi-line directives.
+    <br> 
+</p>
 
-# Organizare
-Implementarea unui Preprocesor a fost abordata in felul urmator:
-1. Citirea argumentelor de la tastatura, tratand cazurile in care se mentioneaza (sau de cele mai multe ori, nu) parametrii.
-2. Stocand acesti parametri, iar cei utili fiind trimisi ca parametri unei functii speciale de parsare a directivelor.
-3. Tratarea in ordine a directivelor, eventual corelandu-le unde era cazul.
+## 📝 Table of Contents
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Usage](#usage)
+- [Built Using](#built_using)
 
-Consider ca mi-am reamintit multe din cunostintele de PC din anul 1, dar am pierdut foarte mult timp pe niste operatii de tip "GRIND", din care nu se pot extrage informatii cu adevarat noi.
-Consider implementarea mea ca fiind una slaba, dar care isi face treaba. Trebuia clar sa modularizez codul mai puternic, dar stilul de implementare ales initial mi-a limitat cumva aceasta abilitate. Voi schimba asta pe viitor.
+## 🧐 About <a name = "about"></a>
+The C Preprocessor is not a part of the compiler, but is a separate step in the compilation process. In simple terms, a C Preprocessor is just a text substitution tool and it instructs the compiler to do required pre-processing before the actual compilation.
 
-## Implementare
 
-Nu intregul enunt al temei a fost implementat, define-urile multi-line au reprezentat o problema, cat si ultimele teste de include
+<img src="./res/Preprocessor-In-C.png">
 
-Testele au mai omis din cazuri,de exemplu IFDEF in cazul in care e in Hashmap.
 
-Dificila a fost partea initiala de parsare a argumentelor, nu ca era ea grea in mod special, ci fiindca nu a fost exprimata deloc clar in cerinta. As ruga cei ce se ocupa de tema sa aiba asta in vedere, cerinta prost formulata. In esenta, trebuia sa verifici singur toate testele ca sa intelegi cum vor fi cititi parametrii.
- 
+## 🏁 Getting Started <a name = "getting_started"></a>
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-## Compilare
+### Prerequisites
+To run the preprocessor on your computer you must have:
+* for **UNIX** based operating systems: 
+    * **gcc** - is a tool from the [GNU Compiler Collection](https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/) used to compile and link C programs
+* for **Windows** operating system: 
+    * **cl** -  is a tool that controls the [Microsoft C++](https://docs.microsoft.com/en-us/cpp/build/reference/compiler-options?view=vs-2019) compiler and linker
 
-Se linkeaza biblioteca hashmap.h cu codul sursa aferent hashmap.c si main.c, care reprezinta codul sursa al programului principal. Dupa rularea fisierului makefile, se genereaza executabilul so-cpp.
+### Installing
+This is a step by step series of examples that tell you how to get a development env running.
 
-Acesta se ruleaza cu :
+* **Linux**:
+    * start by updating the packages list
+        ```shell-script
+        $ sudo apt update
+        ```
+    * install the build-essential package(a package of new packages including gcc, g++ and make) by typing:
+        ```shell-script
+        $ sudo apt install build-essential 
+        ```
+* **Windows**:
+    * all you need to do to install **cl** on your machine is to install the [*Microsoft Visual Studio Comunity Edition*](https://visualstudio.microsoft.com/).
 
-./so-cpp --lista argumente.
+## 🔧 Running the tests <a name = "tests"></a>
+If you want to run the automated tests for Linux system you must follow the following steps:
+* clone the repository by copping the following command in your terminal:
+    ```bash
+    git clone https://github.com/the-sergiu/C-Language-Preprocessor
+    sudo apt-get install valgrind # necessary for checker
+    ```
+* go into the project repo and run the following command:
+    ```bash
+    make # should generate so-cpp executable
+    cp so-cpp checker/ # move executable to checker folder
+    make -f Makefile.chekcer # This will run build and run the makefile
+    ./run_all.sh # This can be run once the Makefile.checker has been built
+    ```
+* now in the test director a new folder **_test/outputs** has appeared containing the results.
 
-Testare checker:
+The purpose of the test suite is to show the preprocessing of .c and .h files from the **_test/inputs** folder. The results of the preprocessed files is then compared with the CPP output (utilitary of GCC that is used to preprocess the .c and .h files for the GCC compiler) 
 
-make -f Makefile.checker
+## 🎈 Usage <a name="usage"></a>
+To use the preprocessor on other files, simply use the following command:
+```bash
+    ./so-cpp --parameter list
+```
 
+Details about parameters and implementation, below.
+
+## ⛏️ Built Using <a name = "built_using"></a>
+- [Visual Studio Code](https://code.visualstudio.com/) - code editor
+- [GCC](https://gcc.gnu.org/) - used to compile the program on my Linux machine
+- [CPP](https://www.codeproject.com/Articles/3853/Wave-a-Standard-conformant-C-preprocessor-library) - preprocessing utility used to test the program output
